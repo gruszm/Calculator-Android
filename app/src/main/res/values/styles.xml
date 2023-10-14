@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ButtonStyle">
+        <item name="android:textSize">36sp</item>
+        <item name="android:layout_marginHorizontal">4dp</item> <!-- Dodaj margines poziomy, dostosuj wartość do swoich potrzeb -->
+        <item name="android:layout_marginVertical">2dp</item>
+        <!-- Dodaj inne właściwości stylu, jeśli są potrzebne -->
+    </style>
+
+</resources>
