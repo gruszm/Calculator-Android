@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity
     private static final int VALUE_TEXT_VIEW_MAX_SIZE = 10;
     private static final String OPERATION_TEXT_VIEW_PREFIX = "Current operation: ";
 
+    private boolean typingInitiated;
     private TextView operationTextView, valueTextView;
     private Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9,
             btnComma, btnAllClear, btnPlus, btnMinus, btnMultiply, btnDivide;
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        typingInitiated = false;
 
         operationTextView = findViewById(R.id.operation_text_view);
         valueTextView = findViewById(R.id.value_text_view);
@@ -64,21 +67,25 @@ public class MainActivity extends AppCompatActivity
     public void commaOnClick(View v)
     {
         String text = valueTextView.getText().toString();
+        long numberOfDigits = text.chars().filter(Character::isDigit).count();
 
-        if (!(text.contains(",")) && (text.length() > 0))
+        if ((!text.contains(",")) && (numberOfDigits > 0) && (numberOfDigits < VALUE_TEXT_VIEW_MAX_SIZE))
         {
             valueTextView.setText(valueTextView.getText() + ",");
+            typingInitiated = true;
         }
     }
 
     public void allClearOnClick(View v)
     {
         valueTextView.setText("0");
+        typingInitiated = false;
         updateOperationTextView('\0');
     }
 
     /**
      * Updates the operation text view.
+     *
      * @param operation Character of wanted operation; pass an empty string to clear the text view.
      */
     private void updateOperationTextView(char operation)
@@ -121,9 +128,17 @@ public class MainActivity extends AppCompatActivity
         @Override
         public void onClick(View v)
         {
-            if (valueTextView.length() < VALUE_TEXT_VIEW_MAX_SIZE)
+            String text = valueTextView.getText().toString();
+            long numberOfDigits = text.chars().filter(Character::isDigit).count();
+
+            if ((!typingInitiated) && (digit != 0))
             {
-                valueTextView.setText(valueTextView.getText() + String.valueOf(digit));
+                valueTextView.setText(text.substring(1) + String.valueOf(digit));
+                typingInitiated = true;
+            }
+            else if (typingInitiated && (numberOfDigits < VALUE_TEXT_VIEW_MAX_SIZE))
+            {
+                valueTextView.setText(text + String.valueOf(digit));
             }
         }
     }
