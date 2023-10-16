@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity
 {
-    private static final int VALUE_TEXT_VIEW_MAX_SIZE = 20;
+    private static final int VALUE_TEXT_VIEW_MAX_SIZE = 10;
     private static final String OPERATION_TEXT_VIEW_PREFIX = "Current operation: ";
 
     private TextView operationTextView, valueTextView;
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity
 
         if (!(text.contains(",")) && (text.length() > 0))
         {
-            valueTextView.append(",");
+            valueTextView.setText(valueTextView.getText() + ",");
         }
     }
 
@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity
         {
             if (valueTextView.length() < VALUE_TEXT_VIEW_MAX_SIZE)
             {
-                valueTextView.append(String.valueOf(digit));
+                valueTextView.setText(valueTextView.getText() + String.valueOf(digit));
             }
         }
     }
