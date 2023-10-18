@@ -1,5 +1,6 @@
 package com.example.kalkulator.classes;
 
+import android.os.VibrationEffect;
 import android.view.View;
 import com.example.kalkulator.activities.MainActivity;
 
@@ -28,5 +29,7 @@ public class DigitOnClickListener implements View.OnClickListener
         {
             valueTextView.setText(valueTextView.getText() + String.valueOf(digit));
         }
+
+        vibrator.vibrate(VibrationEffect.createOneShot(VIBRATION_DURATION_MS, VIBRATION_AMPLITUDE));
     }
 }

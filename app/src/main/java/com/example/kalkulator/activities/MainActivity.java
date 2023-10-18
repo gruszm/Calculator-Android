@@ -1,6 +1,9 @@
 package com.example.kalkulator.activities;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,6 +22,9 @@ public class MainActivity extends AppCompatActivity
     public static final char CHAR_DIVIDE = '÷';
     public static final int VALUE_TEXT_VIEW_MAX_SIZE = 10;
     public static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#.##########");
+    public static final int VIBRATION_DURATION_MS = 8;
+    public static final int VIBRATION_AMPLITUDE = 100;
+    public static Vibrator vibrator;
 
     public static TextView operationTextView, valueTextView, previousValueTextView;
     public static boolean newValueFlag;
@@ -31,6 +37,8 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         operationTextView = findViewById(R.id.operation_text_view);
         valueTextView = findViewById(R.id.value_text_view);
@@ -81,6 +89,8 @@ public class MainActivity extends AppCompatActivity
         valueTextView.setText("0");
         previousValueTextView.setText("");
         operationTextView.setText("");
+
+        vibrator.vibrate(VibrationEffect.createOneShot(VIBRATION_DURATION_MS, VIBRATION_AMPLITUDE));
     }
 
     public void equalsOnClick(View v)
@@ -97,6 +107,8 @@ public class MainActivity extends AppCompatActivity
             valueTextView.setText(DECIMAL_FORMAT.format(result).replace('.', ','));
             newValueFlag = true;
         }
+
+        vibrator.vibrate(VibrationEffect.createOneShot(VIBRATION_DURATION_MS, VIBRATION_AMPLITUDE));
     }
 
     public void commaOnClick(View v)
@@ -108,5 +120,7 @@ public class MainActivity extends AppCompatActivity
         {
             valueTextView.setText(valueTextView.getText() + ",");
         }
+
+        vibrator.vibrate(VibrationEffect.createOneShot(VIBRATION_DURATION_MS, VIBRATION_AMPLITUDE));
     }
 }
