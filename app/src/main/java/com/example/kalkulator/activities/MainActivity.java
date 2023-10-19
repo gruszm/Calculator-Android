@@ -105,7 +105,6 @@ public class MainActivity extends AppCompatActivity
             previousValueTextView.setText("");
             operationTextView.setText("");
             valueTextView.setText(DECIMAL_FORMAT.format(result).replace('.', ','));
-            newValueFlag = true;
         }
 
         vibrator.vibrate(VibrationEffect.createOneShot(VIBRATION_DURATION_MS, VIBRATION_AMPLITUDE));
