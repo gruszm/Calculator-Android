@@ -8,21 +8,25 @@
     tools:context=".HomeActivity">
 
     <TextView
-        android:text="TextView"
+        android:id="@+id/welcome_text"
+        android:text="Welcome To My Calculator!"
+        android:textSize="24sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="100dp"/>
     <Button
+        android:id="@+id/btn_simple_calculator"
         android:text="Simple Calculator"
+        android:textSize="24sp"
+        android:paddingVertical="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_simple_calculator"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/welcome_text"
+        android:layout_marginTop="150dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
