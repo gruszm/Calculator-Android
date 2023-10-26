@@ -8,21 +8,65 @@
     tools:context=".HomeActivity">
 
     <TextView
-        android:text="TextView"
+        android:id="@+id/welcome_text"
+        android:text="Welcome To My Calculator!"
+        android:textSize="24sp"
+        android:autoSizeTextType="uniform"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="100dp"/>
+
     <Button
+        android:id="@+id/btn_simple_calculator"
         android:text="Simple Calculator"
+        android:textSize="24sp"
+        android:paddingVertical="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_simple_calculator"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toTopOf="@id/btn_advanced_calculator"
+        android:layout_marginBottom="20dp"/>
+
+    <Button
+        android:id="@+id/btn_advanced_calculator"
+        android:text="Advanced Calculator"
+        android:textSize="24sp"
+        android:paddingVertical="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_about"
+        android:layout_marginBottom="20dp"/>
+
+    <Button
+        android:id="@+id/btn_about"
+        android:text="About"
+        android:textSize="24sp"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_close_app"
+        android:layout_marginBottom="20dp"/>
+
+    <Button
+        android:id="@+id/btn_close_app"
+        android:text="Exit"
+        android:textSize="24sp"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="80dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

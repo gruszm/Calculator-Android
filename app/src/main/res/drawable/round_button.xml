@@ -1,5 +1,0 @@
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle">
-    <corners android:radius="20dp" /> <!-- Zmienić radius na pożądany promień -->
-    <solid android:color="@color/cardview_shadow_end_color" /> <!-- Zmienić kolor tła na pożądany kolor -->
-</shape>
