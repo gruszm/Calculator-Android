@@ -28,6 +28,30 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/welcome_text"
-        android:layout_marginTop="150dp"/>
+        android:layout_marginTop="120dp"/>
+
+    <Button
+        android:id="@+id/btn_advanced_calculator"
+        android:text="Advanced Calculator"
+        android:textSize="24sp"
+        android:paddingVertical="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_simple_calculator"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/btn_about"
+        android:text="About"
+        android:textSize="24sp"
+        android:paddingVertical="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_advanced_calculator"
+        android:layout_marginTop="20dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
