@@ -1,11 +1,11 @@
-package com.example.kalkulator;
+package com.example.kalkulator.activities;
 
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import com.example.kalkulator.activities.MainActivity;
+import com.example.kalkulator.R;
 
 public class HomeActivity extends AppCompatActivity
 {

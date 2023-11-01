@@ -1,7 +1,8 @@
-package com.example.kalkulator;
+package com.example.kalkulator.activities;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.kalkulator.R;
 
 public class AdvancedCalcActivity extends AppCompatActivity
 {
