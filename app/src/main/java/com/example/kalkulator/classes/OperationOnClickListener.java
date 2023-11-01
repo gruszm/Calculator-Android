@@ -16,38 +16,31 @@ public class OperationOnClickListener implements View.OnClickListener
     @Override
     public void onClick(View v)
     {
-        if (!newValueFlag)
+        double result;
+        double prevValue;
+        double currValue = Double.parseDouble(valueTextView.getText().toString().replace(',', '.'));
+
+        if (operationTextView.getText().toString().isEmpty())
         {
-            double result;
-            double prevValue;
-            double currValue = Double.parseDouble(valueTextView.getText().toString().replace(',', '.'));
+            previousValueTextView.setText(valueTextView.getText());
+        }
+        else if (previousValueTextView.getText().toString().isEmpty())
+        {
+            result = calculate(0, currValue);
 
-            if (operationTextView.getText().toString().isEmpty())
-            {
-                previousValueTextView.setText(valueTextView.getText());
-            }
-            else if (previousValueTextView.getText().toString().isEmpty())
-            {
-                result = calculate(0, currValue);
-
-                previousValueTextView.setText(DECIMAL_FORMAT.format(result).replace('.', ','));
-            }
-            else
-            {
-                prevValue = Double.parseDouble(previousValueTextView.getText().toString().replace(',', '.'));
-
-                result = calculate(prevValue, currValue);
-
-                previousValueTextView.setText(DECIMAL_FORMAT.format(result).replace('.', ','));
-            }
-
-            operationTextView.setText(String.valueOf(operation));
-            newValueFlag = true;
+            previousValueTextView.setText(DECIMAL_FORMAT.format(result).replace('.', ','));
         }
         else
         {
-            operationTextView.setText(String.valueOf(operation));
+            prevValue = Double.parseDouble(previousValueTextView.getText().toString().replace(',', '.'));
+
+            result = calculate(prevValue, currValue);
+
+            previousValueTextView.setText(DECIMAL_FORMAT.format(result).replace('.', ','));
         }
+
+        operationTextView.setText(String.valueOf(operation));
+        newValueFlag = true;
 
         makeStandardVibration();
     }
