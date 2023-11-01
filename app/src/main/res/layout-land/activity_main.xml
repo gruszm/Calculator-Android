@@ -23,6 +23,7 @@
             android:gravity="bottom|right"
             android:textColor="@color/gray"
             android:paddingRight="10dp"
+            android:paddingLeft="10dp"
             android:autoSizeTextType="uniform"/>
 
         <TextView
@@ -46,6 +47,7 @@
         android:gravity="bottom|end"
         android:textSize="72sp"
         android:paddingRight="10dp"
+        android:paddingLeft="10dp"
         android:autoSizeTextType="uniform"/>
 
     <GridLayout

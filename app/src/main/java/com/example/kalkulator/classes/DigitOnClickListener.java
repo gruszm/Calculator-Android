@@ -30,6 +30,6 @@ public class DigitOnClickListener implements View.OnClickListener
             valueTextView.setText(valueTextView.getText() + String.valueOf(digit));
         }
 
-        vibrator.vibrate(VibrationEffect.createOneShot(VIBRATION_DURATION_MS, VIBRATION_AMPLITUDE));
+        makeStandardVibration();
     }
 }

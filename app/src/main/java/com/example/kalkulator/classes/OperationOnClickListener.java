@@ -1,13 +1,12 @@
 package com.example.kalkulator.classes;
 
-import android.os.VibrationEffect;
 import android.view.View;
 
 import static com.example.kalkulator.activities.MainActivity.*;
 
 public class OperationOnClickListener implements View.OnClickListener
 {
-    private char operation;
+    private final char operation;
 
     public OperationOnClickListener(char operation)
     {
@@ -50,7 +49,7 @@ public class OperationOnClickListener implements View.OnClickListener
             operationTextView.setText(String.valueOf(operation));
         }
 
-        vibrator.vibrate(VibrationEffect.createOneShot(VIBRATION_DURATION_MS, VIBRATION_AMPLITUDE));
+        makeStandardVibration();
     }
 
     public static double calculate(double prevValue, double currValue) throws NumberFormatException

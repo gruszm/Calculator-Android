@@ -24,8 +24,8 @@ public class MainActivity extends AppCompatActivity
     public static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#.##########");
     public static final int VIBRATION_DURATION_MS = 8;
     public static final int VIBRATION_AMPLITUDE = 100;
-    public static Vibrator vibrator;
 
+    public static Vibrator vibrator;
     public static TextView operationTextView, valueTextView, previousValueTextView;
     public static boolean newValueFlag;
 
@@ -39,12 +39,12 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        newValueFlag = false;
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         operationTextView = findViewById(R.id.operation_text_view);
         valueTextView = findViewById(R.id.value_text_view);
         previousValueTextView = findViewById(R.id.previous_value_text_view);
-        newValueFlag = false;
 
         btn0 = findViewById(R.id.btn0);
         btn1 = findViewById(R.id.btn1);
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity
             valueTextView.setText("0");
         }
 
-        vibrator.vibrate(VibrationEffect.createOneShot(VIBRATION_DURATION_MS, VIBRATION_AMPLITUDE));
+        makeStandardVibration();
     }
 
     public void plusMinusOnClick(View v)
@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity
 
         valueTextView.setText(valueText);
 
-        vibrator.vibrate(VibrationEffect.createOneShot(VIBRATION_DURATION_MS, VIBRATION_AMPLITUDE));
+        makeStandardVibration();
     }
 
     public void allClearOnClick(View v)
@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity
         previousValueTextView.setText("");
         operationTextView.setText("");
 
-        vibrator.vibrate(VibrationEffect.createOneShot(VIBRATION_DURATION_MS, VIBRATION_AMPLITUDE));
+        makeStandardVibration();
     }
 
     public void equalsOnClick(View v)
@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity
             valueTextView.setText(DECIMAL_FORMAT.format(result).replace('.', ','));
         }
 
-        vibrator.vibrate(VibrationEffect.createOneShot(VIBRATION_DURATION_MS, VIBRATION_AMPLITUDE));
+        makeStandardVibration();
     }
 
     public void commaOnClick(View v)
@@ -161,6 +161,11 @@ public class MainActivity extends AppCompatActivity
             valueTextView.setText(valueTextView.getText() + ",");
         }
 
+        makeStandardVibration();
+    }
+
+    public static void makeStandardVibration()
+    {
         vibrator.vibrate(VibrationEffect.createOneShot(VIBRATION_DURATION_MS, VIBRATION_AMPLITUDE));
     }
 }

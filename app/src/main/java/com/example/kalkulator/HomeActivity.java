@@ -18,6 +18,7 @@ public class HomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_home);
 
         btnSimpleCalculator = findViewById(R.id.btn_simple_calculator);
+
         btnSimpleCalculator.setOnClickListener(this::btnSimpleCalculatorOnClick);
     }
 
