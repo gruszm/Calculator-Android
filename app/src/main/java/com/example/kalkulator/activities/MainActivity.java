@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity
 
     private Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9,
             btnComma, btnAllClear, btnPlus, btnMinus, btnMultiply, btnDivide, btnEquals,
-            btnPlusMinus;
+            btnPlusMinus, btnClearOrClearAll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity
         btnDivide = findViewById(R.id.btn_divide);
         btnEquals = findViewById(R.id.btn_equals);
         btnPlusMinus = findViewById(R.id.btn_plus_minus);
+        btnClearOrClearAll = findViewById(R.id.clear_or_clear_all);
 
         btn0.setOnClickListener(new DigitOnClickListener(0));
         btn1.setOnClickListener(new DigitOnClickListener(1));
@@ -85,6 +86,25 @@ public class MainActivity extends AppCompatActivity
         btnDivide.setOnClickListener(new OperationOnClickListener(CHAR_DIVIDE));
         btnEquals.setOnClickListener(this::equalsOnClick);
         btnPlusMinus.setOnClickListener(this::plusMinusOnClick);
+        btnClearOrClearAll.setOnClickListener(this::clearOrClearAllOnClick);
+    }
+
+    private void clearOrClearAllOnClick(View view)
+    {
+        String valueText = valueTextView.getText().toString();
+        String prevValueText = previousValueTextView.getText().toString();
+
+        if (valueText.equals("0"))
+        {
+            operationTextView.setText("");
+            previousValueTextView.setText("");
+        }
+        else
+        {
+            valueTextView.setText("0");
+        }
+
+        vibrator.vibrate(VibrationEffect.createOneShot(VIBRATION_DURATION_MS, VIBRATION_AMPLITUDE));
     }
 
     public void plusMinusOnClick(View v)
