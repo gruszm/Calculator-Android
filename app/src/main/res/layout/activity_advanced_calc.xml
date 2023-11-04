@@ -7,11 +7,6 @@
     tools:context=".activities.MainActivity"
     android:orientation="vertical">
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.2"/>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -85,43 +80,51 @@
             style="@style/ButtonStylePortraitAdvanced"/>
 
         <Button
-            android:id="@+id/btn_placeholder_1"
-            android:text=""
+            android:id="@+id/btn_sin"
+            android:text="sin"
+            android:textSize="30sp"
             style="@style/ButtonStylePortraitAdvanced"/>
 
         <Button
-            android:id="@+id/btn_placeholder_2"
-            android:text=""
+            android:id="@+id/btn_cos"
+            android:text="cos"
+            android:textSize="30sp"
             style="@style/ButtonStylePortraitAdvanced"/>
 
         <Button
-            android:id="@+id/btn_placeholder_3"
-            android:text=""
+            android:id="@+id/btn_tan"
+            android:text="tan"
+            android:textSize="30sp"
             style="@style/ButtonStylePortraitAdvanced"/>
 
         <Button
-            android:id="@+id/btn_placeholder_4"
-            android:text=""
+            android:id="@+id/btn_ln"
+            android:text="ln"
+            android:textSize="30sp"
             style="@style/ButtonStylePortraitAdvanced"/>
 
         <Button
-            android:id="@+id/btn_placeholder_5"
-            android:text=""
+            android:id="@+id/btn_sqrt"
+            android:text="sqrt"
+            android:textSize="30sp"
             style="@style/ButtonStylePortraitAdvanced"/>
 
         <Button
-            android:id="@+id/btn_placeholder_6"
-            android:text=""
+            android:id="@+id/btn_x_squared"
+            android:text="x^2"
+            android:textSize="30sp"
             style="@style/ButtonStylePortraitAdvanced"/>
 
         <Button
-            android:id="@+id/btn_placeholder_7"
-            android:text=""
+            android:id="@+id/btn_x_to_the_y_power"
+            android:text="x^y"
+            android:textSize="30sp"
             style="@style/ButtonStylePortraitAdvanced"/>
 
         <Button
-            android:id="@+id/btn_placeholder_8"
-            android:text=""
+            android:id="@+id/btn_log"
+            android:text="log"
+            android:textSize="30sp"
             style="@style/ButtonStylePortraitAdvanced"/>
 
         <Button
