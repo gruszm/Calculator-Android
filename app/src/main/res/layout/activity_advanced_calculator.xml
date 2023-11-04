@@ -22,8 +22,8 @@
             android:textSize="30sp"
             android:gravity="bottom|right"
             android:textColor="@color/gray"
-            android:paddingRight="10dp"
             android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:autoSizeTextType="uniform"/>
 
         <TextView
@@ -46,8 +46,8 @@
         android:id="@+id/value_text_view"
         android:gravity="bottom|end"
         android:textSize="72sp"
-        android:paddingRight="10dp"
         android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:autoSizeTextType="uniform"/>
 
     <GridLayout
@@ -68,64 +68,54 @@
         <Button
             android:id="@+id/clear_or_clear_all"
             android:text="C/CE"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
             android:textSize="24sp"
             android:textStyle="bold"
             style="@style/ButtonStylePortraitAdvanced"/>
 
         <Button
-            android:id="@+id/btn_divide"
-            android:text="÷"
-            style="@style/ButtonStylePortraitAdvanced"/>
+            android:id="@+id/btn_plus_minus"
+            android:text="+/-"
+            style="@style/ButtonStylePortraitAdvanced2"/>
 
         <Button
             android:id="@+id/btn_sin"
             android:text="sin"
-            android:textSize="30sp"
-            style="@style/ButtonStylePortraitAdvanced"/>
+            style="@style/ButtonStylePortraitAdvanced2"/>
 
         <Button
             android:id="@+id/btn_cos"
             android:text="cos"
-            android:textSize="30sp"
-            style="@style/ButtonStylePortraitAdvanced"/>
+            style="@style/ButtonStylePortraitAdvanced2"/>
 
         <Button
             android:id="@+id/btn_tan"
             android:text="tan"
-            android:textSize="30sp"
-            style="@style/ButtonStylePortraitAdvanced"/>
+            style="@style/ButtonStylePortraitAdvanced2"/>
 
         <Button
             android:id="@+id/btn_ln"
             android:text="ln"
-            android:textSize="30sp"
-            style="@style/ButtonStylePortraitAdvanced"/>
+            style="@style/ButtonStylePortraitAdvanced2"/>
 
         <Button
             android:id="@+id/btn_sqrt"
             android:text="sqrt"
-            android:textSize="30sp"
-            style="@style/ButtonStylePortraitAdvanced"/>
+            style="@style/ButtonStylePortraitAdvanced2"/>
 
         <Button
             android:id="@+id/btn_x_squared"
             android:text="x^2"
-            android:textSize="30sp"
-            style="@style/ButtonStylePortraitAdvanced"/>
+            style="@style/ButtonStylePortraitAdvanced2"/>
 
         <Button
             android:id="@+id/btn_x_to_the_y_power"
             android:text="x^y"
-            android:textSize="30sp"
-            style="@style/ButtonStylePortraitAdvanced"/>
+            style="@style/ButtonStylePortraitAdvanced2"/>
 
         <Button
             android:id="@+id/btn_log"
             android:text="log"
-            android:textSize="30sp"
-            style="@style/ButtonStylePortraitAdvanced"/>
+            style="@style/ButtonStylePortraitAdvanced2"/>
 
         <Button
             android:id="@+id/btn7"
@@ -143,8 +133,8 @@
             style="@style/ButtonStylePortraitAdvanced"/>
 
         <Button
-            android:id="@+id/btn_multiply"
-            android:text="⨯"
+            android:id="@+id/btn_divide"
+            android:text="÷"
             style="@style/ButtonStylePortraitAdvanced"/>
 
         <Button
@@ -163,8 +153,8 @@
             style="@style/ButtonStylePortraitAdvanced"/>
 
         <Button
-            android:id="@+id/btn_minus"
-            android:text="—"
+            android:id="@+id/btn_multiply"
+            android:text="⨯"
             style="@style/ButtonStylePortraitAdvanced"/>
 
         <Button
@@ -183,21 +173,8 @@
             style="@style/ButtonStylePortraitAdvanced"/>
 
         <Button
-            android:id="@+id/btn_plus"
-            android:text="+"
-            style="@style/ButtonStylePortraitAdvanced"/>
-
-        <Button
-            android:id="@+id/btn_plus_minus"
-            android:text="+/-"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
-            android:textSize="32sp"
-            style="@style/ButtonStylePortraitAdvanced"/>
-
-        <Button
-            android:id="@+id/btn0"
-            android:text="0"
+            android:id="@+id/btn_minus"
+            android:text="—"
             style="@style/ButtonStylePortraitAdvanced"/>
 
         <Button
@@ -206,8 +183,18 @@
             style="@style/ButtonStylePortraitAdvanced"/>
 
         <Button
+            android:id="@+id/btn0"
+            android:text="0"
+            style="@style/ButtonStylePortraitAdvanced"/>
+
+        <Button
             android:id="@+id/btn_equals"
             android:text="="
+            style="@style/ButtonStylePortraitAdvanced"/>
+
+        <Button
+            android:id="@+id/btn_plus"
+            android:text="+"
             style="@style/ButtonStylePortraitAdvanced"/>
 
     </GridLayout>
