@@ -26,7 +26,7 @@ public class HomeActivity extends AppCompatActivity
 
     private void btnAdvancedCalculatorOnClick(View view)
     {
-        Intent intent = new Intent(HomeActivity.this, AdvancedCalcActivity.class);
+        Intent intent = new Intent(HomeActivity.this, AdvancedCalculatorActivity.class);
         startActivity(intent);
     }
 

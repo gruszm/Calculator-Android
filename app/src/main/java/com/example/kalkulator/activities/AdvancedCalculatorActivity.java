@@ -4,13 +4,13 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.kalkulator.R;
 
-public class AdvancedCalcActivity extends AppCompatActivity
+public class AdvancedCalculatorActivity extends AppCompatActivity
 {
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_advanced_calc);
+        setContentView(R.layout.activity_advanced_calculator);
     }
 }
