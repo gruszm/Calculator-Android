@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".activities.SimpleCalculatorActivity"
             android:exported="true">
         </activity>
     </application>

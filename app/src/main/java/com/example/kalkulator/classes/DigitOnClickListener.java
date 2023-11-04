@@ -1,10 +1,9 @@
 package com.example.kalkulator.classes;
 
-import android.os.VibrationEffect;
 import android.view.View;
-import com.example.kalkulator.activities.MainActivity;
+import com.example.kalkulator.activities.SimpleCalculatorActivity;
 
-import static com.example.kalkulator.activities.MainActivity.*;
+import static com.example.kalkulator.activities.SimpleCalculatorActivity.*;
 
 public class DigitOnClickListener implements View.OnClickListener
 {
@@ -25,7 +24,7 @@ public class DigitOnClickListener implements View.OnClickListener
             valueTextView.setText(String.valueOf(digit));
             newValueFlag = false;
         }
-        else if (numberOfDigits < MainActivity.VALUE_TEXT_VIEW_MAX_SIZE)
+        else if (numberOfDigits < SimpleCalculatorActivity.VALUE_TEXT_VIEW_MAX_SIZE)
         {
             valueTextView.setText(valueTextView.getText() + String.valueOf(digit));
         }

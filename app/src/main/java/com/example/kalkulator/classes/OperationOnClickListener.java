@@ -2,7 +2,7 @@ package com.example.kalkulator.classes;
 
 import android.view.View;
 
-import static com.example.kalkulator.activities.MainActivity.*;
+import static com.example.kalkulator.activities.SimpleCalculatorActivity.*;
 
 public class OperationOnClickListener implements View.OnClickListener
 {

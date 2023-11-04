@@ -4,13 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MainActivity"
+    tools:context=".activities.SimpleCalculatorActivity"
     android:orientation="vertical">
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.2"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -39,7 +34,7 @@
             android:gravity="top|right"
             android:id="@+id/operation_text_view"
             android:paddingRight="10dp"
-            android:textSize="32sp"/>
+            android:textSize="18sp"/>
 
     </LinearLayout>
 
@@ -68,105 +63,98 @@
             android:backgroundTint="@color/orange"
             android:layout_columnSpan="2"
             android:textStyle="bold"
-            style="@style/ButtonStylePortraitSimple"/>
+            style="@style/ButtonStyleLandscapeSimple"/>
 
         <Button
             android:id="@+id/clear_or_clear_all"
             android:text="C/CE"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
-            android:textSize="24sp"
             android:textStyle="bold"
-            style="@style/ButtonStylePortraitSimple"/>
+            style="@style/ButtonStyleLandscapeSimple"/>
 
         <Button
             android:id="@+id/btn_divide"
             android:text="÷"
-            style="@style/ButtonStylePortraitSimple"/>
+            style="@style/ButtonStyleLandscapeSimple"/>
 
         <Button
             android:id="@+id/btn7"
             android:text="7"
-            style="@style/ButtonStylePortraitSimple"/>
+            style="@style/ButtonStyleLandscapeSimple"/>
 
         <Button
             android:id="@+id/btn8"
             android:text="8"
-            style="@style/ButtonStylePortraitSimple"/>
+            style="@style/ButtonStyleLandscapeSimple"/>
 
         <Button
             android:id="@+id/btn9"
             android:text="9"
-            style="@style/ButtonStylePortraitSimple"/>
+            style="@style/ButtonStyleLandscapeSimple"/>
 
         <Button
             android:id="@+id/btn_multiply"
             android:text="⨯"
-            style="@style/ButtonStylePortraitSimple"/>
+            style="@style/ButtonStyleLandscapeSimple"/>
 
         <Button
             android:id="@+id/btn4"
             android:text="4"
-            style="@style/ButtonStylePortraitSimple"/>
+            style="@style/ButtonStyleLandscapeSimple"/>
 
         <Button
             android:id="@+id/btn5"
             android:text="5"
-            style="@style/ButtonStylePortraitSimple"/>
+            style="@style/ButtonStyleLandscapeSimple"/>
 
         <Button
             android:id="@+id/btn6"
             android:text="6"
-            style="@style/ButtonStylePortraitSimple"/>
+            style="@style/ButtonStyleLandscapeSimple"/>
 
         <Button
             android:id="@+id/btn_minus"
             android:text="—"
-            style="@style/ButtonStylePortraitSimple"/>
+            style="@style/ButtonStyleLandscapeSimple"/>
 
         <Button
             android:id="@+id/btn1"
             android:text="1"
-            style="@style/ButtonStylePortraitSimple"/>
+            style="@style/ButtonStyleLandscapeSimple"/>
 
         <Button
             android:id="@+id/btn2"
             android:text="2"
-            style="@style/ButtonStylePortraitSimple"/>
+            style="@style/ButtonStyleLandscapeSimple"/>
 
         <Button
             android:id="@+id/btn3"
             android:text="3"
-            style="@style/ButtonStylePortraitSimple"/>
+            style="@style/ButtonStyleLandscapeSimple"/>
 
         <Button
             android:id="@+id/btn_plus"
             android:text="+"
-            style="@style/ButtonStylePortraitSimple"/>
+            style="@style/ButtonStyleLandscapeSimple"/>
 
         <Button
             android:id="@+id/btn_plus_minus"
             android:text="+/-"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
-            android:textSize="32sp"
-            style="@style/ButtonStylePortraitSimple"/>
+            style="@style/ButtonStyleLandscapeSimple"/>
 
         <Button
             android:id="@+id/btn0"
             android:text="0"
-            style="@style/ButtonStylePortraitSimple"/>
+            style="@style/ButtonStyleLandscapeSimple"/>
 
         <Button
             android:id="@+id/btn_comma"
             android:text=","
-            style="@style/ButtonStylePortraitSimple"/>
+            style="@style/ButtonStyleLandscapeSimple"/>
 
         <Button
             android:id="@+id/btn_equals"
             android:text="="
-            style="@style/ButtonStylePortraitSimple"/>
+            style="@style/ButtonStyleLandscapeSimple"/>
 
     </GridLayout>
-
 </LinearLayout>

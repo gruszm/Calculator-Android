@@ -32,7 +32,7 @@ public class HomeActivity extends AppCompatActivity
 
     private void btnSimpleCalculatorOnClick(View v)
     {
-        Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+        Intent intent = new Intent(HomeActivity.this, SimpleCalculatorActivity.class);
         startActivity(intent);
     }
 }

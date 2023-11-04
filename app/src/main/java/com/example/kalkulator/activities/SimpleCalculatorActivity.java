@@ -14,7 +14,7 @@ import com.example.kalkulator.classes.OperationOnClickListener;
 
 import java.text.DecimalFormat;
 
-public class MainActivity extends AppCompatActivity
+public class SimpleCalculatorActivity extends AppCompatActivity
 {
     public static final char CHAR_PLUS = '+';
     public static final char CHAR_MINUS = '—';
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_simple_calculator);
 
         newValueFlag = false;
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
