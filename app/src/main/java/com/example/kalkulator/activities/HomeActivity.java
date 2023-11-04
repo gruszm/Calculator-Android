@@ -9,7 +9,7 @@ import com.example.kalkulator.R;
 
 public class HomeActivity extends AppCompatActivity
 {
-    private Button btnSimpleCalculator;
+    private Button btnSimpleCalculator, btnAdvancedCalculator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -18,8 +18,16 @@ public class HomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_home);
 
         btnSimpleCalculator = findViewById(R.id.btn_simple_calculator);
+        btnAdvancedCalculator = findViewById(R.id.btn_advanced_calculator);
 
         btnSimpleCalculator.setOnClickListener(this::btnSimpleCalculatorOnClick);
+        btnAdvancedCalculator.setOnClickListener(this::btnAdvancedCalculatorOnClick);
+    }
+
+    private void btnAdvancedCalculatorOnClick(View view)
+    {
+        Intent intent = new Intent(HomeActivity.this, AdvancedCalcActivity.class);
+        startActivity(intent);
     }
 
     private void btnSimpleCalculatorOnClick(View v)
