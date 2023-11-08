@@ -9,8 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.kalkulator.R;
-import com.example.kalkulator.classes.DigitOnClickListener;
-import com.example.kalkulator.classes.OperationOnClickListener;
+import com.example.kalkulator.listeners.DigitOnClickListener;
+import com.example.kalkulator.listeners.OperationOnClickListener;
 
 import java.text.DecimalFormat;
 

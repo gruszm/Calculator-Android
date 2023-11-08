@@ -1,4 +1,4 @@
-package com.example.kalkulator.classes;
+package com.example.kalkulator.listeners;
 
 import android.view.View;
 import com.example.kalkulator.activities.SimpleCalculatorActivity;
