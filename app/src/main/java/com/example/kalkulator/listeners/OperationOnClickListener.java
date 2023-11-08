@@ -3,6 +3,7 @@ package com.example.kalkulator.listeners;
 import android.view.View;
 
 import static com.example.kalkulator.activities.SimpleCalculatorActivity.*;
+import static com.example.kalkulator.utils.CalculatorHandler.*;
 
 public class OperationOnClickListener implements View.OnClickListener
 {
@@ -22,21 +23,21 @@ public class OperationOnClickListener implements View.OnClickListener
 
         if (operationTextView.getText().toString().isEmpty())
         {
-            previousValueTextView.setText(valueTextView.getText());
+            prevValueTextView.setText(valueTextView.getText());
         }
-        else if (previousValueTextView.getText().toString().isEmpty())
+        else if (prevValueTextView.getText().toString().isEmpty())
         {
             result = calculate(0, currValue);
 
-            previousValueTextView.setText(DECIMAL_FORMAT.format(result).replace('.', ','));
+            prevValueTextView.setText(DECIMAL_FORMAT.format(result).replace('.', ','));
         }
         else
         {
-            prevValue = Double.parseDouble(previousValueTextView.getText().toString().replace(',', '.'));
+            prevValue = Double.parseDouble(prevValueTextView.getText().toString().replace(',', '.'));
 
             result = calculate(prevValue, currValue);
 
-            previousValueTextView.setText(DECIMAL_FORMAT.format(result).replace('.', ','));
+            prevValueTextView.setText(DECIMAL_FORMAT.format(result).replace('.', ','));
         }
 
         operationTextView.setText(String.valueOf(operation));

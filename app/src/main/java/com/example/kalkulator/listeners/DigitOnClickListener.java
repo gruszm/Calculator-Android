@@ -3,7 +3,8 @@ package com.example.kalkulator.listeners;
 import android.view.View;
 import com.example.kalkulator.activities.SimpleCalculatorActivity;
 
-import static com.example.kalkulator.activities.SimpleCalculatorActivity.*;
+import static com.example.kalkulator.activities.SimpleCalculatorActivity.makeStandardVibration;
+import static com.example.kalkulator.utils.CalculatorHandler.*;
 
 public class DigitOnClickListener implements View.OnClickListener
 {
