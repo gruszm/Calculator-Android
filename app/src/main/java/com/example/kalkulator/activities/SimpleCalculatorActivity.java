@@ -50,7 +50,7 @@ public class SimpleCalculatorActivity extends AppCompatActivity
         btnDivide = findViewById(R.id.btn_divide);
         btnEquals = findViewById(R.id.btn_equals);
         btnPlusMinus = findViewById(R.id.btn_plus_minus);
-        btnClearOrClearAll = findViewById(R.id.clear_or_clear_all);
+        btnClearOrClearAll = findViewById(R.id.btn_clear_or_clear_all);
 
         btn0.setOnClickListener(new DigitOnClickListener(0));
         btn1.setOnClickListener(new DigitOnClickListener(1));

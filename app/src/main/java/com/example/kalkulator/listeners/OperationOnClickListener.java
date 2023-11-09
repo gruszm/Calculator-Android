@@ -65,6 +65,9 @@ public class OperationOnClickListener implements View.OnClickListener
             case CHAR_DIVIDE:
                 result = prevValue / currValue;
                 break;
+            case CHAR_POWER:
+                result = Math.pow(prevValue, currValue);
+                break;
         }
 
         return result;

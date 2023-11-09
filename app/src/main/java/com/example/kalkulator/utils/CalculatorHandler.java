@@ -12,6 +12,7 @@ public class CalculatorHandler
     public static final char CHAR_MINUS = '—';
     public static final char CHAR_MULTIPLY = '⨯';
     public static final char CHAR_DIVIDE = '÷';
+    public static final char CHAR_POWER = '^';
     public static final int VALUE_TEXT_VIEW_MAX_SIZE = 10;
     public static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#.##########");
     public static final int VIBRATION_DURATION_MS = 8;

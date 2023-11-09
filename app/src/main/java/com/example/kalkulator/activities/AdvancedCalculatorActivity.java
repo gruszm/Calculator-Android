@@ -18,7 +18,7 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
 
     private Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9,
                    btnComma, btnAllClear, btnPlus, btnMinus, btnMultiply, btnDivide, btnEquals,
-                   btnPlusMinus, btnClearOrClearAll;
+                   btnPlusMinus, btnClearOrClearAll, btnXToTheYPower;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -51,7 +51,8 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
         btnDivide = findViewById(R.id.btn_divide);
         btnEquals = findViewById(R.id.btn_equals);
         btnPlusMinus = findViewById(R.id.btn_plus_minus);
-        btnClearOrClearAll = findViewById(R.id.clear_or_clear_all);
+        btnClearOrClearAll = findViewById(R.id.btn_clear_or_clear_all);
+        btnXToTheYPower = findViewById(R.id.btn_x_to_the_y_power);
 
         btn0.setOnClickListener(new DigitOnClickListener(0));
         btn1.setOnClickListener(new DigitOnClickListener(1));
@@ -73,6 +74,7 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
         btnEquals.setOnClickListener(this::equalsOnClick);
         btnPlusMinus.setOnClickListener(this::plusMinusOnClick);
         btnClearOrClearAll.setOnClickListener(this::clearOrClearAllOnClick);
+        btnXToTheYPower.setOnClickListener(new OperationOnClickListener(CHAR_POWER));
     }
 
     private void clearOrClearAllOnClick(View view)

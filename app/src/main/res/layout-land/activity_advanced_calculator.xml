@@ -67,7 +67,7 @@
             style="@style/ButtonStyleLandscapeAdvanced"/>
 
         <Button
-            android:id="@+id/clear_or_clear_all"
+            android:id="@+id/btn_clear_or_clear_all"
             android:text="C/CE"
             android:textSize="22sp"
             android:textStyle="bold"
