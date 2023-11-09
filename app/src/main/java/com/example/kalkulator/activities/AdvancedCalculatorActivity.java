@@ -17,8 +17,9 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
 {
 
     private Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9,
-                   btnComma, btnAllClear, btnPlus, btnMinus, btnMultiply, btnDivide, btnEquals,
-                   btnPlusMinus, btnClearOrClearAll, btnXToTheYPower, btnXSquared;
+            btnComma, btnAllClear, btnPlus, btnMinus, btnMultiply, btnDivide, btnEquals,
+            btnPlusMinus, btnClearOrClearAll, btnXToTheYPower, btnXSquared,
+            btnSin, btnCos, btnTan, btnLn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -54,6 +55,10 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
         btnClearOrClearAll = findViewById(R.id.btn_clear_or_clear_all);
         btnXToTheYPower = findViewById(R.id.btn_x_to_the_y_power);
         btnXSquared = findViewById(R.id.btn_x_squared);
+        btnSin = findViewById(R.id.btn_sin);
+        btnCos = findViewById(R.id.btn_cos);
+        btnTan = findViewById(R.id.btn_tan);
+        btnLn = findViewById(R.id.btn_ln);
 
         btn0.setOnClickListener(new DigitOnClickListener(0));
         btn1.setOnClickListener(new DigitOnClickListener(1));
@@ -77,6 +82,54 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
         btnClearOrClearAll.setOnClickListener(this::clearOrClearAllOnClick);
         btnXToTheYPower.setOnClickListener(new OperationOnClickListener(CHAR_POWER));
         btnXSquared.setOnClickListener(this::xSquaredOnClick);
+        btnSin.setOnClickListener(this::sinOnClick);
+        btnCos.setOnClickListener(this::cosOnClick);
+        btnTan.setOnClickListener(this::tanOnClick);
+        btnLn.setOnClickListener(this::lnOnClick);
+    }
+
+    private void lnOnClick(View view)
+    {
+        String valueText = valueTextView.getText().toString();
+
+        Double currValue = Double.parseDouble(valueText.replace(',', '.'));
+
+        currValue = Math.log(currValue);
+
+        valueTextView.setText(DECIMAL_FORMAT.format(currValue).replace('.', ','));
+    }
+
+    private void sinOnClick(View view)
+    {
+        String valueText = valueTextView.getText().toString();
+
+        Double currValue = Double.parseDouble(valueText.replace(',', '.'));
+
+        currValue = Math.sin(currValue);
+
+        valueTextView.setText(DECIMAL_FORMAT.format(currValue).replace('.', ','));
+    }
+
+    private void cosOnClick(View view)
+    {
+        String valueText = valueTextView.getText().toString();
+
+        Double currValue = Double.parseDouble(valueText.replace(',', '.'));
+
+        currValue = Math.cos(currValue);
+
+        valueTextView.setText(DECIMAL_FORMAT.format(currValue).replace('.', ','));
+    }
+
+    private void tanOnClick(View view)
+    {
+        String valueText = valueTextView.getText().toString();
+
+        Double currValue = Double.parseDouble(valueText.replace(',', '.'));
+
+        currValue = Math.tan(currValue);
+
+        valueTextView.setText(DECIMAL_FORMAT.format(currValue).replace('.', ','));
     }
 
     private void xSquaredOnClick(View view)
