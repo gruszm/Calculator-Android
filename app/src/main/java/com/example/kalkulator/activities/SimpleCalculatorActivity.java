@@ -2,7 +2,6 @@ package com.example.kalkulator.activities;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
@@ -12,23 +11,10 @@ import com.example.kalkulator.listeners.DigitOnClickListener;
 import com.example.kalkulator.listeners.OperationOnClickListener;
 import com.example.kalkulator.utils.CalculatorHandler;
 
-import java.text.DecimalFormat;
-
 import static com.example.kalkulator.utils.CalculatorHandler.*;
 
 public class SimpleCalculatorActivity extends AppCompatActivity
 {
-    public static final char CHAR_PLUS = '+';
-    public static final char CHAR_MINUS = '—';
-    public static final char CHAR_MULTIPLY = '⨯';
-    public static final char CHAR_DIVIDE = '÷';
-    public static final int VALUE_TEXT_VIEW_MAX_SIZE = 10;
-    public static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#.##########");
-    public static final int VIBRATION_DURATION_MS = 8;
-    public static final int VIBRATION_AMPLITUDE = 100;
-
-    private static Vibrator vibrator;
-
     private Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9,
                    btnComma, btnAllClear, btnPlus, btnMinus, btnMultiply, btnDivide, btnEquals,
                    btnPlusMinus, btnClearOrClearAll;
@@ -39,8 +25,7 @@ public class SimpleCalculatorActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simple_calculator);
 
-        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-
+        CalculatorHandler.setVibrator((Vibrator) getSystemService(Context.VIBRATOR_SERVICE));
         CalculatorHandler.setValueTextView(findViewById(R.id.value_text_view));
         CalculatorHandler.setOperationTextView(findViewById(R.id.operation_text_view));
         CalculatorHandler.setPrevValueTextView(findViewById(R.id.previous_value_text_view));
@@ -92,7 +77,6 @@ public class SimpleCalculatorActivity extends AppCompatActivity
     private void clearOrClearAllOnClick(View view)
     {
         String valueText = valueTextView.getText().toString();
-        String prevValueText = prevValueTextView.getText().toString();
 
         if (valueText.equals("0"))
         {
@@ -164,10 +148,5 @@ public class SimpleCalculatorActivity extends AppCompatActivity
         }
 
         makeStandardVibration();
-    }
-
-    public static void makeStandardVibration()
-    {
-        vibrator.vibrate(VibrationEffect.createOneShot(VIBRATION_DURATION_MS, VIBRATION_AMPLITUDE));
     }
 }
