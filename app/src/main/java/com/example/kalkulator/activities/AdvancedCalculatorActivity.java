@@ -19,7 +19,7 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
     private Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9,
             btnComma, btnAllClear, btnPlus, btnMinus, btnMultiply, btnDivide, btnEquals,
             btnPlusMinus, btnClearOrClearAll, btnXToTheYPower, btnXSquared,
-            btnSin, btnCos, btnTan, btnLn;
+            btnSin, btnCos, btnTan, btnLn, btnSqrt, btnLog, btnPercent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -59,6 +59,9 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
         btnCos = findViewById(R.id.btn_cos);
         btnTan = findViewById(R.id.btn_tan);
         btnLn = findViewById(R.id.btn_ln);
+        btnSqrt = findViewById(R.id.btn_sqrt);
+        btnLog = findViewById(R.id.btn_log);
+        btnPercent = findViewById(R.id.btn_percent);
 
         btn0.setOnClickListener(new DigitOnClickListener(0));
         btn1.setOnClickListener(new DigitOnClickListener(1));
@@ -86,6 +89,58 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
         btnCos.setOnClickListener(this::cosOnClick);
         btnTan.setOnClickListener(this::tanOnClick);
         btnLn.setOnClickListener(this::lnOnClick);
+        btnSqrt.setOnClickListener(this::sqrtOnClick);
+        btnLog.setOnClickListener(this::logOnClick);
+        btnPercent.setOnClickListener(this::percentOnClick);
+    }
+
+    public void percentOnClick(View v)
+    {
+        if (!prevValueTextView.getText().toString().isEmpty())
+        {
+            double prevValue = Double.parseDouble(prevValueTextView.getText().toString().replace(',', '.'));
+            double currValue = Double.parseDouble(valueTextView.getText().toString().replace(',', '.'));
+            char previousOperation = operationTextView.getText().charAt(0);
+
+            currValue = ((previousOperation == CHAR_PLUS) || (previousOperation == CHAR_MINUS)) ? (currValue / 100.0F * prevValue) : currValue;
+            currValue = ((previousOperation == CHAR_MULTIPLY) || (previousOperation == CHAR_DIVIDE) || (previousOperation == CHAR_POWER)) ? (currValue / 100.0F) : currValue;
+
+            double result = OperationOnClickListener.calculate(prevValue, currValue);
+
+            prevValueTextView.setText("");
+            operationTextView.setText("");
+            valueTextView.setText(DECIMAL_FORMAT.format(result).replace('.', ','));
+
+            newValueFlag = true;
+        }
+
+        makeStandardVibration();
+    }
+
+    private void logOnClick(View view)
+    {
+        String valueText = valueTextView.getText().toString();
+
+        Double currValue = Double.parseDouble(valueText.replace(',', '.'));
+
+        currValue = Math.log10(currValue);
+
+        valueTextView.setText(DECIMAL_FORMAT.format(currValue).replace('.', ','));
+
+        makeStandardVibration();
+    }
+
+    private void sqrtOnClick(View view)
+    {
+        String valueText = valueTextView.getText().toString();
+
+        Double currValue = Double.parseDouble(valueText.replace(',', '.'));
+
+        currValue = Math.sqrt(currValue);
+
+        valueTextView.setText(DECIMAL_FORMAT.format(currValue).replace('.', ','));
+
+        makeStandardVibration();
     }
 
     private void lnOnClick(View view)
@@ -97,6 +152,8 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
         currValue = Math.log(currValue);
 
         valueTextView.setText(DECIMAL_FORMAT.format(currValue).replace('.', ','));
+
+        makeStandardVibration();
     }
 
     private void sinOnClick(View view)
@@ -108,6 +165,8 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
         currValue = Math.sin(currValue);
 
         valueTextView.setText(DECIMAL_FORMAT.format(currValue).replace('.', ','));
+
+        makeStandardVibration();
     }
 
     private void cosOnClick(View view)
@@ -119,6 +178,8 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
         currValue = Math.cos(currValue);
 
         valueTextView.setText(DECIMAL_FORMAT.format(currValue).replace('.', ','));
+
+        makeStandardVibration();
     }
 
     private void tanOnClick(View view)
@@ -130,6 +191,8 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
         currValue = Math.tan(currValue);
 
         valueTextView.setText(DECIMAL_FORMAT.format(currValue).replace('.', ','));
+
+        makeStandardVibration();
     }
 
     private void xSquaredOnClick(View view)
@@ -141,6 +204,8 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
         currValue = Math.pow(currValue, 2.0);
 
         valueTextView.setText(DECIMAL_FORMAT.format(currValue).replace('.', ','));
+
+        makeStandardVibration();
     }
 
     private void clearOrClearAllOnClick(View view)

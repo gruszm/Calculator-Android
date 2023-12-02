@@ -50,7 +50,7 @@ public class OperationOnClickListener implements View.OnClickListener
         double result = 0.0D;
         char previousOperation = operationTextView.getText().charAt(0);
 
-        // Use the previous operation, no the one, which is set on click of an operation button
+        // Use the previous operation, not the one, which is set on click of an operation button
         switch (previousOperation)
         {
             case CHAR_PLUS:
