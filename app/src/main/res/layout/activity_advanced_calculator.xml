@@ -61,14 +61,19 @@
             android:id="@+id/btn_all_clear"
             android:text="AC"
             android:backgroundTint="@color/orange"
-            android:layout_columnSpan="2"
             android:textStyle="bold"
             style="@style/ButtonStylePortraitAdvanced"/>
 
         <Button
-            android:id="@+id/clear_or_clear_all"
+            android:id="@+id/btn_clear_or_clear_all"
             android:text="C/CE"
             android:textSize="24sp"
+            android:textStyle="bold"
+            style="@style/ButtonStylePortraitAdvanced"/>
+
+        <Button
+            android:id="@+id/btn_percent"
+            android:text="%"
             android:textStyle="bold"
             style="@style/ButtonStylePortraitAdvanced"/>
 
