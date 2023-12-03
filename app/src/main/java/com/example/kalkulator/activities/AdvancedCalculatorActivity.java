@@ -27,6 +27,7 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_advanced_calculator);
 
+        CalculatorHandler.setContextForToastMessages(this);
         CalculatorHandler.setVibrator((Vibrator) getSystemService(Context.VIBRATOR_SERVICE));
         CalculatorHandler.setValueTextView(findViewById(R.id.value_text_view));
         CalculatorHandler.setOperationTextView(findViewById(R.id.operation_text_view));
@@ -125,11 +126,16 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
 
             double result = OperationOnClickListener.calculate(prevValue, currValue);
 
-            prevValueTextView.setText("");
-            operationTextView.setText("");
-            valueTextView.setText(DECIMAL_FORMAT.format(result).replace('.', ','));
+            String formattedOutput = DECIMAL_FORMAT.format(result).replace('.', ',');
 
-            newValueFlag = true;
+            if (!isOutputTooLong(formattedOutput))
+            {
+                prevValueTextView.setText("");
+                operationTextView.setText("");
+                valueTextView.setText(formattedOutput);
+
+                newValueFlag = true;
+            }
         }
 
         makeStandardVibration();
@@ -221,7 +227,12 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
 
         currValue = Math.pow(currValue, 2.0);
 
-        valueTextView.setText(DECIMAL_FORMAT.format(currValue).replace('.', ','));
+        String formattedOutput = DECIMAL_FORMAT.format(currValue).replace('.', ',');
+
+        if (!isOutputTooLong(formattedOutput))
+        {
+            valueTextView.setText(formattedOutput);
+        }
 
         makeStandardVibration();
     }
@@ -279,11 +290,16 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
 
             double result = OperationOnClickListener.calculate(prevValue, currValue);
 
-            prevValueTextView.setText("");
-            operationTextView.setText("");
-            valueTextView.setText(DECIMAL_FORMAT.format(result).replace('.', ','));
+            String formattedOutput = DECIMAL_FORMAT.format(result).replace('.', ',');
 
-            newValueFlag = true;
+            if (!isOutputTooLong(formattedOutput))
+            {
+                prevValueTextView.setText("");
+                operationTextView.setText("");
+                valueTextView.setText(formattedOutput);
+
+                newValueFlag = true;
+            }
         }
 
         makeStandardVibration();

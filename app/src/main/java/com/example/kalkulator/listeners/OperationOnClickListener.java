@@ -1,6 +1,7 @@
 package com.example.kalkulator.listeners;
 
 import android.view.View;
+import com.example.kalkulator.utils.CalculatorHandler;
 
 import static com.example.kalkulator.utils.CalculatorHandler.*;
 
@@ -16,19 +17,15 @@ public class OperationOnClickListener implements View.OnClickListener
     @Override
     public void onClick(View v)
     {
+        String formattedOutput;
         double result;
         double prevValue;
         double currValue = Double.parseDouble(valueTextView.getText().toString().replace(',', '.'));
+        boolean outputTooLong;
 
         if (operationTextView.getText().toString().isEmpty())
         {
             prevValueTextView.setText(valueTextView.getText());
-        }
-        else if (prevValueTextView.getText().toString().isEmpty())
-        {
-            result = calculate(0, currValue);
-
-            prevValueTextView.setText(DECIMAL_FORMAT.format(result).replace('.', ','));
         }
         else
         {
@@ -36,7 +33,13 @@ public class OperationOnClickListener implements View.OnClickListener
 
             result = calculate(prevValue, currValue);
 
-            prevValueTextView.setText(DECIMAL_FORMAT.format(result).replace('.', ','));
+            formattedOutput = DECIMAL_FORMAT.format(result).replace('.', ',');
+            outputTooLong = CalculatorHandler.isOutputTooLong(formattedOutput);
+
+            if (!outputTooLong)
+            {
+                prevValueTextView.setText(formattedOutput);
+            }
         }
 
         operationTextView.setText(String.valueOf(operation));

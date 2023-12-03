@@ -25,6 +25,7 @@ public class SimpleCalculatorActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simple_calculator);
 
+        CalculatorHandler.setContextForToastMessages(this);
         CalculatorHandler.setVibrator((Vibrator) getSystemService(Context.VIBRATOR_SERVICE));
         CalculatorHandler.setValueTextView(findViewById(R.id.value_text_view));
         CalculatorHandler.setOperationTextView(findViewById(R.id.operation_text_view));
@@ -145,11 +146,16 @@ public class SimpleCalculatorActivity extends AppCompatActivity
 
             double result = OperationOnClickListener.calculate(prevValue, currValue);
 
-            prevValueTextView.setText("");
-            operationTextView.setText("");
-            valueTextView.setText(DECIMAL_FORMAT.format(result).replace('.', ','));
+            String formattedOutput = DECIMAL_FORMAT.format(result).replace('.', ',');
 
-            newValueFlag = true;
+            if (!isOutputTooLong(formattedOutput))
+            {
+                prevValueTextView.setText("");
+                operationTextView.setText("");
+                valueTextView.setText(formattedOutput);
+
+                newValueFlag = true;
+            }
         }
 
         makeStandardVibration();
