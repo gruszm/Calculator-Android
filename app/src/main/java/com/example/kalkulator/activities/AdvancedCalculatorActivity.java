@@ -33,6 +33,14 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
         CalculatorHandler.setPrevValueTextView(findViewById(R.id.previous_value_text_view));
         CalculatorHandler.setNewValueFlag(false);
 
+        if (savedInstanceState != null)
+        {
+            valueTextView.setText(savedInstanceState.getString("valueText"));
+            operationTextView.setText(savedInstanceState.getString("opText"));
+            prevValueTextView.setText(savedInstanceState.getString("prevValueText"));
+            newValueFlag = savedInstanceState.getBoolean("newValueFlag");
+        }
+
         btn0 = findViewById(R.id.btn0);
         btn1 = findViewById(R.id.btn1);
         btn2 = findViewById(R.id.btn2);
@@ -92,6 +100,16 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
         btnSqrt.setOnClickListener(this::sqrtOnClick);
         btnLog.setOnClickListener(this::logOnClick);
         btnPercent.setOnClickListener(this::percentOnClick);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState)
+    {
+        super.onSaveInstanceState(outState);
+        outState.putString("valueText", valueTextView.getText().toString());
+        outState.putString("opText", operationTextView.getText().toString());
+        outState.putString("prevValueText", prevValueTextView.getText().toString());
+        outState.putBoolean("newValueFlag", newValueFlag);
     }
 
     public void percentOnClick(View v)
