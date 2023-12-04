@@ -1,6 +1,7 @@
 package com.example.kalkulator.listeners;
 
 import android.view.View;
+import android.widget.Toast;
 import com.example.kalkulator.utils.CalculatorHandler;
 
 import static com.example.kalkulator.utils.CalculatorHandler.*;
@@ -22,6 +23,7 @@ public class OperationOnClickListener implements View.OnClickListener
         double prevValue;
         double currValue = Double.parseDouble(valueTextView.getText().toString().replace(',', '.'));
         boolean outputTooLong;
+        boolean operationChange = true;
 
         if (operationTextView.getText().toString().isEmpty())
         {
@@ -36,14 +38,22 @@ public class OperationOnClickListener implements View.OnClickListener
             formattedOutput = DECIMAL_FORMAT.format(result).replace('.', ',');
             outputTooLong = CalculatorHandler.isOutputTooLong(formattedOutput);
 
-            if (!outputTooLong)
+            if (formattedOutput.equals(INFINITY_SYMBOL) || formattedOutput.equals(MINUS_NAN) || formattedOutput.equals(NAN))
+            {
+                Toast.makeText(getToastMessageContext(), "Cannot divide by 0", Toast.LENGTH_SHORT).show();
+                operationChange = false;
+            }
+            else if (!outputTooLong)
             {
                 prevValueTextView.setText(formattedOutput);
             }
         }
 
-        operationTextView.setText(String.valueOf(operation));
-        newValueFlag = true;
+        if (operationChange)
+        {
+            operationTextView.setText(String.valueOf(operation));
+            newValueFlag = true;
+        }
 
         makeStandardVibration();
     }

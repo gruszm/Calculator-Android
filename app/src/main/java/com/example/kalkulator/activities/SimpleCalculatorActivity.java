@@ -149,7 +149,7 @@ public class SimpleCalculatorActivity extends AppCompatActivity
 
             String formattedOutput = DECIMAL_FORMAT.format(result).replace('.', ',');
 
-            if (formattedOutput.equals(INFINITY_SYMBOL))
+            if (formattedOutput.equals(INFINITY_SYMBOL) || formattedOutput.equals(MINUS_NAN) || formattedOutput.equals(NAN))
             {
                 Toast.makeText(this, "Cannot divide by 0", Toast.LENGTH_SHORT).show();
             }

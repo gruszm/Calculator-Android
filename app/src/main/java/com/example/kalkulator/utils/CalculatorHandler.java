@@ -16,6 +16,8 @@ public class CalculatorHandler
     public static final char CHAR_DIVIDE = '÷';
     public static final char CHAR_POWER = '^';
     public static final String INFINITY_SYMBOL = "\u221E"; // infinity symbol (dividing by zero)
+    public static final String MINUS_NAN = "-NaN";
+    public static final String NAN = "NaN";
     public static final int VALUE_TEXT_VIEW_MAX_SIZE = 10;
     public static final int OUTPUT_MAX_SIZE = 20;
     public static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#.##########");
@@ -81,5 +83,10 @@ public class CalculatorHandler
         }
 
         return outputTooLong;
+    }
+
+    public static Context getToastMessageContext()
+    {
+        return toastMessageContext;
     }
 }
