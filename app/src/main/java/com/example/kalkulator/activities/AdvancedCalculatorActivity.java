@@ -127,7 +127,7 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
 
             double result = OperationOnClickListener.calculate(prevValue, currValue);
 
-            String formattedOutput = String.format("%.5f", result).replace('.', ',');
+            String formattedOutput = trimEndingZeros(String.format("%.5f", result).replace('.', ','));
 
             if (formattedOutput.equals(INFINITY_SYMBOL) || formattedOutput.equals(MINUS_NAN) || formattedOutput.equals(NAN))
             {
@@ -156,7 +156,7 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
         {
             currValue = Math.log10(currValue);
 
-            valueTextView.setText(String.format("%.5f", currValue).replace('.', ','));
+            valueTextView.setText(trimEndingZeros(String.format("%.5f", currValue).replace('.', ',')));
         }
         else
         {
@@ -176,7 +176,7 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
         {
             currValue = Math.sqrt(currValue);
 
-            valueTextView.setText(String.format("%.5f", currValue).replace('.', ','));
+            valueTextView.setText(trimEndingZeros(String.format("%.5f", currValue).replace('.', ',')));
         }
         else
         {
@@ -196,7 +196,7 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
         {
             currValue = Math.log(currValue);
 
-            valueTextView.setText(String.format("%.5f", currValue).replace('.', ','));
+            valueTextView.setText(trimEndingZeros(String.format("%.5f", currValue).replace('.', ',')));
         }
         else
         {
@@ -214,7 +214,7 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
 
         currValue = Math.sin(currValue);
 
-        valueTextView.setText(String.format("%.5f", currValue).replace('.', ','));
+        valueTextView.setText(trimEndingZeros(String.format("%.5f", currValue).replace('.', ',')));
 
         makeStandardVibration();
     }
@@ -227,7 +227,7 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
 
         currValue = Math.cos(currValue);
 
-        valueTextView.setText(String.format("%.5f", currValue).replace('.', ','));
+        valueTextView.setText(trimEndingZeros(String.format("%.5f", currValue).replace('.', ',')));
 
         makeStandardVibration();
     }
@@ -254,7 +254,7 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
         {
             currValue = Math.tan(currValue);
 
-            valueTextView.setText(String.format("%.5f", currValue).replace('.', ','));
+            valueTextView.setText(trimEndingZeros(String.format("%.5f", currValue).replace('.', ',')));
         }
 
         makeStandardVibration();
@@ -268,7 +268,7 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
 
         currValue = Math.pow(currValue, 2.0);
 
-        String formattedOutput = String.format("%.5f", currValue).replace('.', ',');
+        String formattedOutput = trimEndingZeros(String.format("%.5f", currValue).replace('.', ','));
 
         if (!isOutputTooLong(formattedOutput))
         {
@@ -331,7 +331,7 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
 
             double result = OperationOnClickListener.calculate(prevValue, currValue);
 
-            String formattedOutput = String.format("%.5f", result).replace('.', ',');
+            String formattedOutput = trimEndingZeros(String.format("%.5f", result).replace('.', ','));
 
             if (formattedOutput.equals(INFINITY_SYMBOL))
             {

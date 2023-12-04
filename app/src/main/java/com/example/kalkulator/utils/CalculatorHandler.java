@@ -84,6 +84,16 @@ public class CalculatorHandler
         return outputTooLong;
     }
 
+    public static String trimEndingZeros(String formatted)
+    {
+        while (formatted.contains(",") && (formatted.endsWith("0") || formatted.endsWith(",")))
+        {
+            formatted = formatted.substring(0, formatted.length() - 1);
+        }
+
+        return formatted;
+    }
+
     public static Context getToastMessageContext()
     {
         return toastMessageContext;
