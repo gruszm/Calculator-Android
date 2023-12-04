@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.kalkulator.R;
 import com.example.kalkulator.listeners.DigitOnClickListener;
@@ -148,7 +149,11 @@ public class SimpleCalculatorActivity extends AppCompatActivity
 
             String formattedOutput = DECIMAL_FORMAT.format(result).replace('.', ',');
 
-            if (!isOutputTooLong(formattedOutput))
+            if (formattedOutput.equals(INFINITY_SYMBOL))
+            {
+                Toast.makeText(this, "Cannot divide by 0", Toast.LENGTH_SHORT).show();
+            }
+            else if (!isOutputTooLong(formattedOutput))
             {
                 prevValueTextView.setText("");
                 operationTextView.setText("");
