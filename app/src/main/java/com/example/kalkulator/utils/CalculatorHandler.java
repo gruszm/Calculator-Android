@@ -19,7 +19,7 @@ public class CalculatorHandler
     public static final String MINUS_NAN = "-NaN";
     public static final String NAN = "NaN";
     public static final int VALUE_TEXT_VIEW_MAX_SIZE = 10;
-    public static final int OUTPUT_MAX_SIZE = 20;
+    public static final int OUTPUT_MAX_SIZE = 15;
     public static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#.##########");
     public static final int VIBRATION_DURATION_MS = 8;
     public static final int VIBRATION_AMPLITUDE = 100;
@@ -71,7 +71,15 @@ public class CalculatorHandler
 
         for (char c : formattedOutput.toCharArray())
         {
-            digitsInOutput += Character.isDigit(c) ? 1 : 0;
+            // only count the digits before a comma
+            if (c == ',')
+            {
+                break;
+            }
+            else
+            {
+                digitsInOutput += Character.isDigit(c) ? 1 : 0;
+            }
         }
 
         System.out.println("digits in output: " + digitsInOutput);
