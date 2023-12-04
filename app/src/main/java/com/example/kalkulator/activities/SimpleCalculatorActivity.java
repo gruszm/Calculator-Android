@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.kalkulator.R;
 import com.example.kalkulator.listeners.DigitOnClickListener;
@@ -25,6 +26,7 @@ public class SimpleCalculatorActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simple_calculator);
 
+        CalculatorHandler.setContextForToastMessages(this);
         CalculatorHandler.setVibrator((Vibrator) getSystemService(Context.VIBRATOR_SERVICE));
         CalculatorHandler.setValueTextView(findViewById(R.id.value_text_view));
         CalculatorHandler.setOperationTextView(findViewById(R.id.operation_text_view));
@@ -145,11 +147,20 @@ public class SimpleCalculatorActivity extends AppCompatActivity
 
             double result = OperationOnClickListener.calculate(prevValue, currValue);
 
-            prevValueTextView.setText("");
-            operationTextView.setText("");
-            valueTextView.setText(DECIMAL_FORMAT.format(result).replace('.', ','));
+            String formattedOutput = DECIMAL_FORMAT.format(result).replace('.', ',');
 
-            newValueFlag = true;
+            if (formattedOutput.equals(INFINITY_SYMBOL) || formattedOutput.equals(MINUS_NAN) || formattedOutput.equals(NAN))
+            {
+                Toast.makeText(this, "Cannot divide by 0", Toast.LENGTH_SHORT).show();
+            }
+            else if (!isOutputTooLong(formattedOutput))
+            {
+                prevValueTextView.setText("");
+                operationTextView.setText("");
+                valueTextView.setText(formattedOutput);
+
+                newValueFlag = true;
+            }
         }
 
         makeStandardVibration();

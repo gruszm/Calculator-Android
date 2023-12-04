@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.kalkulator.R;
 import com.example.kalkulator.listeners.DigitOnClickListener;
@@ -27,6 +28,7 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_advanced_calculator);
 
+        CalculatorHandler.setContextForToastMessages(this);
         CalculatorHandler.setVibrator((Vibrator) getSystemService(Context.VIBRATOR_SERVICE));
         CalculatorHandler.setValueTextView(findViewById(R.id.value_text_view));
         CalculatorHandler.setOperationTextView(findViewById(R.id.operation_text_view));
@@ -125,11 +127,20 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
 
             double result = OperationOnClickListener.calculate(prevValue, currValue);
 
-            prevValueTextView.setText("");
-            operationTextView.setText("");
-            valueTextView.setText(DECIMAL_FORMAT.format(result).replace('.', ','));
+            String formattedOutput = DECIMAL_FORMAT.format(result).replace('.', ',');
 
-            newValueFlag = true;
+            if (formattedOutput.equals(INFINITY_SYMBOL) || formattedOutput.equals(MINUS_NAN) || formattedOutput.equals(NAN))
+            {
+                Toast.makeText(this, "Cannot divide by 0", Toast.LENGTH_SHORT).show();
+            }
+            else if (!isOutputTooLong(formattedOutput))
+            {
+                prevValueTextView.setText("");
+                operationTextView.setText("");
+                valueTextView.setText(formattedOutput);
+
+                newValueFlag = true;
+            }
         }
 
         makeStandardVibration();
@@ -141,9 +152,16 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
 
         Double currValue = Double.parseDouble(valueText.replace(',', '.'));
 
-        currValue = Math.log10(currValue);
+        if (currValue > 0.0D)
+        {
+            currValue = Math.log10(currValue);
 
-        valueTextView.setText(DECIMAL_FORMAT.format(currValue).replace('.', ','));
+            valueTextView.setText(DECIMAL_FORMAT.format(currValue).replace('.', ','));
+        }
+        else
+        {
+            Toast.makeText(this, "The number must not be negative", Toast.LENGTH_SHORT).show();
+        }
 
         makeStandardVibration();
     }
@@ -154,9 +172,16 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
 
         Double currValue = Double.parseDouble(valueText.replace(',', '.'));
 
-        currValue = Math.sqrt(currValue);
+        if (currValue >= 0.0D)
+        {
+            currValue = Math.sqrt(currValue);
 
-        valueTextView.setText(DECIMAL_FORMAT.format(currValue).replace('.', ','));
+            valueTextView.setText(DECIMAL_FORMAT.format(currValue).replace('.', ','));
+        }
+        else
+        {
+            Toast.makeText(this, "The number must not be negative", Toast.LENGTH_SHORT).show();
+        }
 
         makeStandardVibration();
     }
@@ -167,9 +192,16 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
 
         Double currValue = Double.parseDouble(valueText.replace(',', '.'));
 
-        currValue = Math.log(currValue);
+        if (currValue > 0.0D)
+        {
+            currValue = Math.log(currValue);
 
-        valueTextView.setText(DECIMAL_FORMAT.format(currValue).replace('.', ','));
+            valueTextView.setText(DECIMAL_FORMAT.format(currValue).replace('.', ','));
+        }
+        else
+        {
+            Toast.makeText(this, "The number must not be negative", Toast.LENGTH_SHORT).show();
+        }
 
         makeStandardVibration();
     }
@@ -205,10 +237,25 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
         String valueText = valueTextView.getText().toString();
 
         Double currValue = Double.parseDouble(valueText.replace(',', '.'));
+        double delta = 1E-3;
 
-        currValue = Math.tan(currValue);
+        // find k
+        int k = (int) Math.round((currValue - Math.PI / 2) / Math.PI);
 
-        valueTextView.setText(DECIMAL_FORMAT.format(currValue).replace('.', ','));
+        // calculate the difference
+        double diff = Math.abs(currValue - (Math.PI / 2 + k * Math.PI));
+
+        // check if the input is very close to PI/2 + kPI
+        if (diff < delta)
+        {
+            Toast.makeText(this, "The input is very close or equal to PI/2 + kPI, so the result does not exist", Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            currValue = Math.tan(currValue);
+
+            valueTextView.setText(DECIMAL_FORMAT.format(currValue).replace('.', ','));
+        }
 
         makeStandardVibration();
     }
@@ -221,7 +268,12 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
 
         currValue = Math.pow(currValue, 2.0);
 
-        valueTextView.setText(DECIMAL_FORMAT.format(currValue).replace('.', ','));
+        String formattedOutput = DECIMAL_FORMAT.format(currValue).replace('.', ',');
+
+        if (!isOutputTooLong(formattedOutput))
+        {
+            valueTextView.setText(formattedOutput);
+        }
 
         makeStandardVibration();
     }
@@ -279,11 +331,20 @@ public class AdvancedCalculatorActivity extends AppCompatActivity
 
             double result = OperationOnClickListener.calculate(prevValue, currValue);
 
-            prevValueTextView.setText("");
-            operationTextView.setText("");
-            valueTextView.setText(DECIMAL_FORMAT.format(result).replace('.', ','));
+            String formattedOutput = DECIMAL_FORMAT.format(result).replace('.', ',');
 
-            newValueFlag = true;
+            if (formattedOutput.equals(INFINITY_SYMBOL))
+            {
+                Toast.makeText(this, "Cannot divide by 0", Toast.LENGTH_SHORT).show();
+            }
+            else if (!isOutputTooLong(formattedOutput))
+            {
+                prevValueTextView.setText("");
+                operationTextView.setText("");
+                valueTextView.setText(formattedOutput);
+
+                newValueFlag = true;
+            }
         }
 
         makeStandardVibration();
