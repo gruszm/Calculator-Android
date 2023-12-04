@@ -147,7 +147,7 @@ public class SimpleCalculatorActivity extends AppCompatActivity
 
             double result = OperationOnClickListener.calculate(prevValue, currValue);
 
-            String formattedOutput = DECIMAL_FORMAT.format(result).replace('.', ',');
+            String formattedOutput = String.format("%.5f", result).replace('.', ',');
 
             if (formattedOutput.equals(INFINITY_SYMBOL) || formattedOutput.equals(MINUS_NAN) || formattedOutput.equals(NAN))
             {

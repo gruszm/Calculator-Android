@@ -35,7 +35,7 @@ public class OperationOnClickListener implements View.OnClickListener
 
             result = calculate(prevValue, currValue);
 
-            formattedOutput = DECIMAL_FORMAT.format(result).replace('.', ',');
+            formattedOutput = String.format("%.5f", result).replace('.', ',');
             outputTooLong = CalculatorHandler.isOutputTooLong(formattedOutput);
 
             if (formattedOutput.equals(INFINITY_SYMBOL) || formattedOutput.equals(MINUS_NAN) || formattedOutput.equals(NAN))
