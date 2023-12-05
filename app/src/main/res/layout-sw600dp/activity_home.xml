@@ -53,11 +53,11 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/btn_close_app"
+        app:layout_constraintBottom_toTopOf="@id/btn_exit"
         android:layout_marginBottom="40dp"/>
 
     <Button
-        android:id="@+id/btn_close_app"
+        android:id="@+id/btn_exit"
         android:text="Exit"
         android:textSize="48sp"
         android:paddingVertical="10dp"

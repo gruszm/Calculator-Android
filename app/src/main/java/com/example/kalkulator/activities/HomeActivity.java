@@ -25,7 +25,7 @@ public class HomeActivity extends AppCompatActivity
         btnSimpleCalculator = findViewById(R.id.btn_simple_calculator);
         btnAdvancedCalculator = findViewById(R.id.btn_advanced_calculator);
         btnAbout = findViewById(R.id.btn_about);
-        btnExit = findViewById(R.id.btn_close_app);
+        btnExit = findViewById(R.id.btn_exit);
 
         btnSimpleCalculator.setOnClickListener(this::btnSimpleCalculatorOnClick);
         btnAdvancedCalculator.setOnClickListener(this::btnAdvancedCalculatorOnClick);
