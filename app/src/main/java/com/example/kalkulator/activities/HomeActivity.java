@@ -14,7 +14,7 @@ import static com.example.kalkulator.utils.CalculatorHandler.makeStandardVibrati
 
 public class HomeActivity extends AppCompatActivity
 {
-    private Button btnSimpleCalculator, btnAdvancedCalculator;
+    private Button btnSimpleCalculator, btnAdvancedCalculator, btnAbout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -24,11 +24,21 @@ public class HomeActivity extends AppCompatActivity
 
         btnSimpleCalculator = findViewById(R.id.btn_simple_calculator);
         btnAdvancedCalculator = findViewById(R.id.btn_advanced_calculator);
+        btnAbout = findViewById(R.id.btn_about);
 
         btnSimpleCalculator.setOnClickListener(this::btnSimpleCalculatorOnClick);
         btnAdvancedCalculator.setOnClickListener(this::btnAdvancedCalculatorOnClick);
+        btnAbout.setOnClickListener(this::btnAboutOnClick);
 
         CalculatorHandler.setVibrator((Vibrator) getSystemService(Context.VIBRATOR_SERVICE));
+    }
+
+    private void btnAboutOnClick(View view)
+    {
+        makeStandardVibration();
+
+        Intent intent = new Intent(HomeActivity.this, AboutActivity.class);
+        startActivity(intent);
     }
 
     private void btnAdvancedCalculatorOnClick(View view)
