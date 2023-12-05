@@ -76,7 +76,7 @@
         <Button
             android:id="@+id/btn_percent"
             android:text="%"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             style="@style/ButtonStyleLandscapeAdvanced"/>
 
