@@ -26,6 +26,11 @@ public class SimpleCalculatorActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simple_calculator);
 
+        if ((savedInstanceState != null) && (savedInstanceState.getBoolean("advCalcCreation") == true))
+        {
+            setContentView(R.layout.activity_advanced_calculator);
+        }
+
         CalculatorHandler.setContextForToastMessages(this);
         CalculatorHandler.setVibrator((Vibrator) getSystemService(Context.VIBRATOR_SERVICE));
         CalculatorHandler.setValueTextView(findViewById(R.id.value_text_view));
@@ -33,12 +38,13 @@ public class SimpleCalculatorActivity extends AppCompatActivity
         CalculatorHandler.setPrevValueTextView(findViewById(R.id.previous_value_text_view));
         CalculatorHandler.setNewValueFlag(false);
 
-        if (savedInstanceState != null)
+        if ((savedInstanceState != null) && (savedInstanceState.getBoolean("rotationEvent") == true))
         {
             valueTextView.setText(savedInstanceState.getString("valueText"));
             operationTextView.setText(savedInstanceState.getString("opText"));
             prevValueTextView.setText(savedInstanceState.getString("prevValueText"));
             newValueFlag = savedInstanceState.getBoolean("newValueFlag");
+            savedInstanceState.putBoolean("rotationEvent", false);
         }
 
         btn0 = findViewById(R.id.btn0);
@@ -92,6 +98,7 @@ public class SimpleCalculatorActivity extends AppCompatActivity
         outState.putString("opText", operationTextView.getText().toString());
         outState.putString("prevValueText", prevValueTextView.getText().toString());
         outState.putBoolean("newValueFlag", newValueFlag);
+        outState.putBoolean("rotationEvent", true);
     }
 
     private void clearOrClearAllOnClick(View view)
@@ -151,7 +158,14 @@ public class SimpleCalculatorActivity extends AppCompatActivity
 
             if (formattedOutput.equals(INFINITY_SYMBOL) || formattedOutput.equals(MINUS_NAN) || formattedOutput.equals(NAN))
             {
-                Toast.makeText(this, "Cannot divide by 0", Toast.LENGTH_SHORT).show();
+                if (operationTextView.getText().charAt(0) == CHAR_POWER)
+                {
+                    Toast.makeText(this, "The output is too long", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(this, "Cannot divide by 0", Toast.LENGTH_SHORT).show();
+                }
             }
             else if (!isOutputTooLong(formattedOutput))
             {

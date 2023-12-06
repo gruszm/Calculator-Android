@@ -40,7 +40,14 @@ public class OperationOnClickListener implements View.OnClickListener
 
             if (formattedOutput.equals(INFINITY_SYMBOL) || formattedOutput.equals(MINUS_NAN) || formattedOutput.equals(NAN))
             {
-                Toast.makeText(getToastMessageContext(), "Cannot divide by 0", Toast.LENGTH_SHORT).show();
+                if (operationTextView.getText().charAt(0) == CHAR_POWER)
+                {
+                    Toast.makeText(getToastMessageContext(), "The output is too long", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(getToastMessageContext(), "Cannot divide by 0", Toast.LENGTH_SHORT).show();
+                }
                 operationChange = false;
             }
             else if (!outputTooLong)
