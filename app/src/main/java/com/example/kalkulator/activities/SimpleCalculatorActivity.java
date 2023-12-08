@@ -109,6 +109,7 @@ public class SimpleCalculatorActivity extends AppCompatActivity
         {
             operationTextView.setText("");
             prevValueTextView.setText("");
+            CalculatorHandler.setNewValueFlag(false);
         }
         else
         {
@@ -141,6 +142,7 @@ public class SimpleCalculatorActivity extends AppCompatActivity
         valueTextView.setText("0");
         prevValueTextView.setText("");
         operationTextView.setText("");
+        CalculatorHandler.setNewValueFlag(false);
 
         makeStandardVibration();
     }
@@ -189,6 +191,8 @@ public class SimpleCalculatorActivity extends AppCompatActivity
         {
             valueTextView.setText(valueTextView.getText() + ",");
         }
+
+        CalculatorHandler.setNewValueFlag(false);
 
         makeStandardVibration();
     }
